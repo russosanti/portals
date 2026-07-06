@@ -72,7 +72,7 @@ namespace ProBuilder2.Actions
 				if(ren != null)
 					pb_EditorUtility.SetSelectionRenderState(ren, pb_EditorUtility.GetSelectionRenderState());
 
-				if( PrefabUtility.GetPrefabType(go) == PrefabType.Prefab )
+				if( PrefabUtility.IsPartOfPrefabAsset(go) )
 					return;
 
 				pb_EditorUtility.VerifyMesh(pb);

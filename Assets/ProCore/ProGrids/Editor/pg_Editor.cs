@@ -468,9 +468,9 @@ namespace ProGrids
 		public void OnAfterDeserialize()
 		{
 			instance = this;
-			SceneView.onSceneGUIDelegate += OnSceneGUI;
+			SceneView.duringSceneGui += OnSceneGUI;
 			EditorApplication.update += Update;
-			EditorApplication.hierarchyWindowChanged += HierarchyWindowChanged;
+			EditorApplication.hierarchyChanged += HierarchyWindowChanged;
 		}
 
 		void OnEnable()
@@ -483,13 +483,13 @@ namespace ProGrids
 
 		public void Initialize()
 		{
-			SceneView.onSceneGUIDelegate -= OnSceneGUI;
+			SceneView.duringSceneGui -= OnSceneGUI;
 			EditorApplication.update -= Update;
-			EditorApplication.hierarchyWindowChanged -= HierarchyWindowChanged;
+			EditorApplication.hierarchyChanged -= HierarchyWindowChanged;
 
-			SceneView.onSceneGUIDelegate += OnSceneGUI;
+			SceneView.duringSceneGui += OnSceneGUI;
 			EditorApplication.update += Update;
-			EditorApplication.hierarchyWindowChanged += HierarchyWindowChanged;
+			EditorApplication.hierarchyChanged += HierarchyWindowChanged;
 
 			LoadGUIResources();
 			LoadPreferences();
@@ -529,9 +529,9 @@ namespace ProGrids
 		{
 			pg_GridRenderer.Destroy();
 
-			SceneView.onSceneGUIDelegate -= OnSceneGUI;
+			SceneView.duringSceneGui -= OnSceneGUI;
 			EditorApplication.update -= Update;
-			EditorApplication.hierarchyWindowChanged -= HierarchyWindowChanged;
+			EditorApplication.hierarchyChanged -= HierarchyWindowChanged;
 
 			instance = null;
 

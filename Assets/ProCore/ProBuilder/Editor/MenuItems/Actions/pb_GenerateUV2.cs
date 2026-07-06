@@ -31,7 +31,7 @@ namespace ProBuilder2.Actions
 		[MenuItem("Tools/" + pb_Constant.PRODUCT_NAME + "/Actions/Generate UV2 - Scene", false, pb_Constant.MENU_ACTIONS + 20)]
 		public static void MenuGenerateUV2Scene()
 		{
-			pb_Object[] sel = (pb_Object[])FindObjectsOfType(typeof(pb_Object));
+			pb_Object[] sel = FindObjectsByType<pb_Object>();
 
 			if( !Menu_GenerateUV2(sel) )
 				return;

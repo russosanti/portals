@@ -41,7 +41,16 @@ namespace ProGrids
 		static int[] SnapVals = new int[] { 1, 0 };
 		static bool prefsLoaded = false;
 
-		[PreferenceItem("ProGrids")]
+		[SettingsProvider]
+		private static SettingsProvider CreateSettingsProvider()
+		{
+			return new SettingsProvider("Preferences/ProGrids", SettingsScope.User)
+			{
+				guiHandler = searchContext => PreferencesGUI(),
+				keywords = new[] { "ProGrids", "grid", "snap" }
+			};
+		}
+
 		public static void PreferencesGUI()
 		{
 			if (!prefsLoaded)
